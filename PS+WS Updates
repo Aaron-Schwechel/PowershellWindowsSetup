@@ -1,0 +1,7 @@
+Set-ExecutionPolicy RemoteSigned
+Install-Module -Name PSWindowsUpdate -Force
+winget install --id Microsoft.Powershell --source winget
+winget install --id Microsoft.Powershell.Preview --source winget
+Update-Module -Name PSWindowsUpdate -Force
+Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot
+ 
