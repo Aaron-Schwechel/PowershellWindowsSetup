@@ -1,0 +1,19 @@
+# Betriebssysteminformationen abrufen
+$osInfo = Get-WmiObject -Class Win32_OperatingSystem
+$osName = $osInfo.Caption
+$osVersion = $osInfo.Version
+$osArchitecture = $osInfo.OSArchitecture
+
+# Computerhardwareinformationen abrufen
+$hardwareInfo = Get-WmiObject -Class Win32_ComputerSystem
+$computerName = $hardwareInfo.Name
+$totalMemory = [math]::Round($hardwareInfo.TotalPhysicalMemory / 1GB, 2)
+$cpuInfo = Get-WmiObject -Class Win32_Processor
+$cpuName = $cpuInfo.Name
+$cpuCores = $cpuInfo.NumberOfCores
+
+# Ausgabe der Informationen
+Write-Host "Betriebssystem: $osName ($osVersion), $osArchitecture"
+Write-Host "Computername: $computerName"
+Write-Host "CPU: $cpuName ($cpuCores Kerne)"
+Write-Host "Arbeitsspeicher: $totalMemory GB"
