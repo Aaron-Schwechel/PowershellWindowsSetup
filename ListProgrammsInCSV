@@ -1,0 +1,10 @@
+# Pfad zur CSV-Datei für die Programmliste
+$csvDatei = "C:\Pfad\Zur\Programmliste.csv"
+
+# Abrufen der Liste installierter Programme
+$programmliste = Get-WmiObject Win32_Product | Select-Object Name, Version, InstallDate, Vendor
+
+# Exportieren der Programmliste in eine CSV-Datei
+$programmliste | Export-Csv -Path $csvDatei -NoTypeInformation
+
+Write-Host "Liste installierter Programme wurde in $csvDatei gespeichert."
